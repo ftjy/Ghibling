@@ -1,0 +1,21 @@
+jwt:
+    expiration-minute: 10
+    issuer: www.example.com
+    secret-key: secret
+server:
+    port: 8080
+spring:
+    application:
+        name: ghibling
+    datasource:
+        password: password
+        url: jdbc:mysql://localhost:3306/ghibling?allowPublicKeyRetrieval=true&useSSL=false&sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
+        username: root
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL8Dialect
+        hibernate:
+            ddl-auto: update
+            naming:
+                implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        open-in-view: false

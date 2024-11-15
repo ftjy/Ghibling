@@ -1,9 +1,9 @@
-package com.mine.ghibling.service;
+package com.mine.ghibling.service.impl;
 
 import com.mine.ghibling.model.Films;
 import com.mine.ghibling.repository.FilmRepository;
+import com.mine.ghibling.service.IFilmService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,13 +13,17 @@ import java.util.Arrays;
 
 @Service
 @Slf4j
-public class FilmService {
-    @Autowired
-    private RestTemplate restTemplate;
+public class FilmService implements IFilmService {
 
-    @Autowired
-    private FilmRepository filmRepository;
+    private final RestTemplate restTemplate;
+    private final FilmRepository filmRepository;
 
+    public FilmService(RestTemplate restTemplate, FilmRepository filmRepository) {
+        this.filmRepository = filmRepository;
+        this.restTemplate = restTemplate;
+    }
+
+    @Override
     public Films[] fetchDataAndSave() {
         // Call the external API
         String apiUrl = "https://ghibli.rest/films";
