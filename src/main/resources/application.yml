@@ -9,7 +9,7 @@ spring:
         name: ghibling
     datasource:
         password: password
-        url: jdbc:mysql://localhost:3306/ghibling?allowPublicKeyRetrieval=true&useSSL=false&sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
+        url: jdbc:mysql://localhost:3306/Ghibling?allowPublicKeyRetrieval=true&useSSL=false&sessionVariables=sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false
         username: root
     jpa:
         database-platform: org.hibernate.dialect.MySQL8Dialect
