@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.Date;
 
 @Service
 @Slf4j
@@ -38,20 +39,21 @@ public class FilmService implements IFilmService {
             if (films != null) {
                 for (Films data : films) {
                     Films film = new Films();
-                    film.setFilm_id(data.getFilm_id());
-                    film.setTitle(data.getTitle());
-                    film.setOriginal_title(data.getOriginal_title());
-                    film.setOriginal_title_romanised(data.getOriginal_title_romanised());
-                    film.setImage(data.getImage());
-                    film.setMovie_banner(data.getMovie_banner());
-                    film.setDescription(data.getDescription());
-                    film.setDirector(data.getDirector());
-                    film.setProducer(data.getProducer());
-                    film.setRelease_date(data.getRelease_date());
-                    film.setRunning_time(data.getRunning_time());
-                    film.setRt_score(data.getRt_score());
-                    film.setUrl(data.getUrl());
-                    log.info(film.toString());
+                    film = film.toBuilder()
+                            .film_id(data.getFilm_id())
+                            .title(data.getTitle())
+                            .original_title(data.getOriginal_title())
+                            .original_title_romanised(data.getOriginal_title_romanised())
+                            .image(data.getImage())
+                            .movie_banner(data.getMovie_banner())
+                            .description(data.getDescription())
+                            .director(data.getDirector())
+                            .producer(data.getProducer())
+                            .release_date(data.getRelease_date())
+                            .running_time(data.getRunning_time())
+                            .rt_score(data.getRt_score())
+                            .url(data.getUrl())
+                            .build();
                     filmRepository.save(film);
                 }
             }
